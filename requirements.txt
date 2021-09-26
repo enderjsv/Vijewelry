@@ -7,6 +7,7 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 pycodestyle==2.7.0
+pyodbc==4.0.32
 SQLAlchemy==1.4.25
 toml==0.10.2
 Werkzeug==2.0.1
