@@ -67,3 +67,6 @@ jobs:
           app-name: 'ViHandmade'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A9CC938B03084542828A76FDD385FCA1 }}
+
+      - name: Set Env Variables Again
+        run: export TEST_ENV_THREE="this is a test 3"
