@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 
-connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
+#connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
 # app_config_client = AzureAppConfigurationClient.from_connection_string(
 #    connection_string)
 # params = quote_plus(app_config_client.get_configuration_setting(
