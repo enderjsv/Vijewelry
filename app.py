@@ -3,19 +3,20 @@ from flask import Flask, render_template
 from sqlalchemy import create_engine
 from sqlalchemy import text
 from urllib.parse import quote_plus
+from azure.appconfiguration import AzureAppConfigurationClient, ConfigurationSetting
 
 import sqlalchemy
+import os
 
 app = Flask(__name__)
 
-try:
-    config = open("config.txt")
-    params = quote_plus(config.read())
+connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
+app_config_client = AzureAppConfigurationClient.from_connection_string(
+    connection_string)
+params = quote_plus(app_config_client.get_configuration_setting(
+    key='db_connection_string').value)
 
-    db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
-
-except OSError:
-    pass
+db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 
 
 @app.route("/")
