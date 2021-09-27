@@ -29,6 +29,11 @@ def index():
     # for row in result:
     #    result_string += row[0] + " "
 
-    return connection_string
+    # return connection_string
     # return (db.table_names()[0]+" "+result_string)
-    # return render_template("index.html")
+    return render_template("index.html")
+
+
+@app.route("/helloTest/")
+def helloTest():
+    return "HELLO"
