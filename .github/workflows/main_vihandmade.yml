@@ -23,7 +23,7 @@ jobs:
           python-version: '3.9'
 
       - name: Set Env Variables
-        run: export TEST_ENV=this is a test
+        run: export TEST_ENV_TWO=this is a test 2
 
       - name: Create and start virtual environment
         run: |
