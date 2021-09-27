@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: '3.9'
 
+      - name: Set Env Variables
+        run: export TEST_ENV=this is a test
+
       - name: Create and start virtual environment
         run: |
           python -m venv venv
