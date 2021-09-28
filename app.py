@@ -55,4 +55,4 @@ def index():
 def helloTest():
     sql = text("select * from test_table")
     result = db.execute(sql)
-    return "HELLO"
+    return "HELLO world"
