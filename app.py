@@ -26,7 +26,7 @@ db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 def index():
 
     sql = text("select * from test_table")
-    #result = db.execute(sql)
+    result = db.execute(sql)
     #result_string = ""
 
     # for row in result:
