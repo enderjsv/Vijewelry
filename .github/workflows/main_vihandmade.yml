@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       config_str: "TEST" #${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
-      
+
     steps:
       - uses: actions/checkout@v2
 
@@ -33,7 +33,7 @@ jobs:
         run: pip install -r requirements.txt
         
       - name: Creating Configuration File
-        run: echo ${{config_str}} >> config.txt
+        run: echo "$config_str" >> config.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
