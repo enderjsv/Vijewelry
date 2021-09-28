@@ -1,0 +1,16 @@
+<h1>Hi Sweetie. This is where your page will be. We can change the url later. This page is ugly now bug I'm just getting
+    started!!!</h1>
+<br />
+<img src="{{ url_for('static', filename= 'images/fampic1.png') }}" />
+<br />
+<img src="{{ url_for('static', filename= 'images/fampic2.png') }}" />
+
+{% if 1 == 1%}
+true that
+{%endif%}
+
+{% for row in result %}
+{% for column in row %}
+{{column}}
+{% endfor %}
+{% endfor %}

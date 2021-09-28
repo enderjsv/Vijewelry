@@ -26,22 +26,11 @@ db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 
 @app.route("/")
 def index():
+    return render_template("index.html")
 
+
+@app.route("/testingGround/")
+def testingGround():
     sql = text("select * from test_table")
     result = db.execute(sql)
-
-    result_string = ""
-
-    for row in result:
-        result_string += row[0] + " "
-
-    # return "The params string is " + params
-    return (db.table_names()[0]+" "+result_string)
-    # return render_template("index.html")
-
-
-@app.route("/helloTest/")
-def helloTest():
-    sql = text("select * from test_table")
-    result = db.execute(sql)
-    return "HELLO world"
+    return render_template("testingGround.html", result=result)
