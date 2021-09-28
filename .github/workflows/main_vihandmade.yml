@@ -30,9 +30,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Hello world action
+      - name: Creating Environment Variable
         env: # Or as an environment variable
           config_str: ${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
+
+      - name: Creating Config File
         run: echo ${{config_str}} >> config.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
