@@ -41,13 +41,13 @@ def index():
         file1.write("<p>Error: %s</p>" % e)
         file1.close()
 
-    #result_string = ""
+    result_string = ""
 
-    # for row in result:
-    #    result_string += row[0] + " "
+    for row in result:
+        result_string += row[0] + " "
 
-    return "The params string is " + params
-    # return (db.table_names()[0]+" "+result_string)
+    # return "The params string is " + params
+    return (db.table_names()[0]+" "+result_string)
     # return render_template("index.html")
 
 
