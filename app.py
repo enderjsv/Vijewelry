@@ -52,4 +52,6 @@ def index():
 
 @app.route("/helloTest/")
 def helloTest():
+    sql = text("select * from test_table")
+    result = db.execute(sql)
     return "HELLO"
