@@ -30,11 +30,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Creating Environment Variable
-        env: # Or as an environment variable
-          config_str: ${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
-
-      - name: Creating Config File
+      - name: Creating Configuration File
+        env: 
+          config_str: "TEST" #${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
         run: echo ${{config_str}} >> config.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
