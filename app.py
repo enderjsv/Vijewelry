@@ -32,7 +32,7 @@ def index():
     # for row in result:
     #    result_string += row[0] + " "
 
-    return connection_string
+    return "The connection string is " + connection_string
     # return (db.table_names()[0]+" "+result_string)
     # return render_template("index.html")
 

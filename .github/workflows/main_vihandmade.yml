@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Create config file
-        run: echo ${{secrets.CONFIG_SERVICE_CONNECT_STRING}} > config.txt
+      - name: Hello world action
+        env: # Or as an environment variable
+          config_str: ${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
+        run: echo ${{config_str}} >> config.txt
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
       - name: Upload artifact for deployment jobs
