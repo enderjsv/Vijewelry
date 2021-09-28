@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env: 
-      config_str: "TEST" #${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
+      config_str: ${{ secrets.CONFIG_SERVICE_CONNECT_STRING }}
 
     steps:
       - uses: actions/checkout@v2
