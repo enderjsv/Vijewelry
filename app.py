@@ -5,8 +5,13 @@ from sqlalchemy import text
 from urllib.parse import quote_plus
 from azure.appconfiguration import AzureAppConfigurationClient, ConfigurationSetting
 
+import sys
 import sqlalchemy
 import os
+
+errfile = open("error_log.txt", "r+")
+errfile.truncate(0)
+errfile.close
 
 app = Flask(__name__)
 config_file = open("config.txt", "r")
@@ -25,8 +30,16 @@ db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 @app.route("/")
 def index():
 
-    sql = text("select * from test_table")
-    result = db.execute(sql)
+    try:
+        sql = text("select * from test_table")
+        result = db.execute(sql)
+    except:
+        e = sys.exc_info()[0]
+
+        file1 = open("error_log.txt", "a")  # append mode
+        file1.write("<p>Error: %s</p>" % e)
+        file1.close()
+
     #result_string = ""
 
     # for row in result:
