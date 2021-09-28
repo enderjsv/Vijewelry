@@ -9,8 +9,11 @@ import sqlalchemy
 import os
 
 app = Flask(__name__)
+config_file = open("config.txt", "r")
 
-#connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
+os.environ['AZURE_APP_CONFIG_CONNECTION_STRING'] = config_file.read()
+
+connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
 # app_config_client = AzureAppConfigurationClient.from_connection_string(
 #    connection_string)
 # params = quote_plus(app_config_client.get_configuration_setting(
@@ -29,9 +32,9 @@ def index():
     # for row in result:
     #    result_string += row[0] + " "
 
-    # return connection_string
+    return connection_string
     # return (db.table_names()[0]+" "+result_string)
-    return render_template("index.html")
+    # return render_template("index.html")
 
 
 @app.route("/helloTest/")
