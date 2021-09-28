@@ -25,7 +25,7 @@ db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 @app.route("/")
 def index():
 
-    #sql = text("select * from test_table")
+    sql = text("select * from test_table")
     #result = db.execute(sql)
     #result_string = ""
 
