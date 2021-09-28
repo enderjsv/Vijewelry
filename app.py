@@ -8,6 +8,7 @@ from azure.appconfiguration import AzureAppConfigurationClient, ConfigurationSet
 import sys
 import sqlalchemy
 import os
+import pyodbc
 
 errfile = open("error_log.txt", "r+")
 errfile.truncate(0)
