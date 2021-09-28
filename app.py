@@ -19,7 +19,7 @@ app_config_client = AzureAppConfigurationClient.from_connection_string(
 params = quote_plus(app_config_client.get_configuration_setting(
     key='db_connection_string').value)
 
-#db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
+db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 
 
 @app.route("/")
