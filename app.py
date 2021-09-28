@@ -19,21 +19,21 @@ app_config_client = AzureAppConfigurationClient.from_connection_string(
 params = quote_plus(app_config_client.get_configuration_setting(
     key='db_connection_string').value)
 
-db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
+#db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 
 
 @app.route("/")
 def index():
 
-    sql = text("select * from test_table")
-    result = db.execute(sql)
-    result_string = ""
+    #sql = text("select * from test_table")
+    #result = db.execute(sql)
+    #result_string = ""
 
-    for row in result:
-        result_string += row[0] + " "
+    # for row in result:
+    #    result_string += row[0] + " "
 
-    # return "The connection string is " + connection_string
-    return (db.table_names()[0]+" "+result_string)
+    return "The params string is " + params
+    # return (db.table_names()[0]+" "+result_string)
     # return render_template("index.html")
 
 
