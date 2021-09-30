@@ -11,10 +11,11 @@ import os
 import pyodbc
 import website.file_upload
 
-db = SQLAlchemy()
+db = None
 
 
 def create_app():
+    global db
     app = Flask(__name__)
 
     config_file = open("config.txt", "r")

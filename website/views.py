@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, request, flash
 from sqlalchemy import text, Table, MetaData, Column, Integer
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import Users
 
 import website.file_upload
 
