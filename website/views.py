@@ -16,16 +16,17 @@ def index():
 
 @views.route("/testingGround/")
 def testingGround():
-
-    admin = Users(user="admin", password=generate_password_hash(
+    """admin = Users(user="admin", password=generate_password_hash(
         '1048', method='sha256'))
     guest = Users(user="guest", password=generate_password_hash(
         '1048', method='sha256'))
 
     db.session.add(admin)
     db.session.add(guest)
-    db.commit
+    db.commit"""
 
+    sql = text("select * from users")
+    result = db.execute(sql)
     return render_template("testingGround.html", result=result)
 
 
