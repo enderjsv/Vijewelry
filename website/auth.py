@@ -10,19 +10,26 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
 
-        print(request.form)
-
         user = request.form.get('user')
         password = request.form.get('password')
 
         if len(user) == 0:
             flash("Please enter Username", category="error")
 
-        if len(password) == 0:
+        elif len(password) == 0:
             flash("Please enter Password", category="error")
 
-        sql = text("select * from users where username = '"+user+"'")
-        result = db.execute(sql)
+        else:
+
+            sql = text("select * from users where username = '"+user+"'")
+            result = db.execute(sql)
+
+            user_row = result.first()
+
+            if user_row and check_password_hash(user_row["password"], password):
+                flash("Logged In "+user_row["username"], category="success")
+            else:
+                flash("User Name/Password Not Found", category="error")
 
     return render_template("login.html")
 
