@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, session
 from sqlalchemy import text, Table, MetaData, Column, Integer
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -27,6 +27,15 @@ def testingGround():
     sql = text("select * from users")
     result = db.execute(sql)
     return render_template("testingGround.html", result=result)
+
+
+@views.route("/adminPage/")
+def adminPage():
+
+    if session.get("username"):
+        return "This is the admin page"
+    else:
+        return "You are not logged in"
 
 
 """@views.route("/uploadFile")

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, session, url_for
 from werkzeug.security import check_password_hash
 from sqlalchemy import text
 from . import db
@@ -10,10 +10,10 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
 
-        user = request.form.get('user')
+        username = request.form.get('user').upper()
         password = request.form.get('password')
 
-        if len(user) == 0:
+        if len(username) == 0:
             flash("Please enter Username", category="error")
 
         elif len(password) == 0:
@@ -21,13 +21,15 @@ def login():
 
         else:
 
-            sql = text("select * from users where username = '"+user+"'")
+            sql = text("select * from users where username = '"+username+"'")
             result = db.execute(sql)
 
             user_row = result.first()
 
             if user_row and check_password_hash(user_row["password"], password):
                 flash("Logged In "+user_row["username"], category="success")
+                session["username"] = user_row["username"]
+                return redirect(url_for('views.adminPage'))
             else:
                 flash("User Name/Password Not Found", category="error")
 
