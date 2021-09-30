@@ -1,0 +1,29 @@
+<form method="POST">
+    <h3 align="center">Login</h3>
+    <div>
+
+        <label for="User">User Name</label>
+        <input type="text" id="user" name="user"">
+
+        </input>
+    </div>
+    <div>
+        <label for=" password">Password</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <br />
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category,message in messages %}
+    {% if category == 'error'%}
+    <div role="alert">{{message}}</div>
+    {% else %}
+    <div role="success">{{message}}</div>
+    {%endif%}
+    {%endfor%}
+    {% endif%}
+    {% endwith %}
+
+    <button type="submit">Login</button>
+</form>
