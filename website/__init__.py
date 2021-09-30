@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy import text
 from urllib.parse import quote_plus
@@ -10,22 +11,23 @@ import os
 import pyodbc
 import website.file_upload
 
-app = Flask(__name__)
-config_file = open("config.txt", "r")
-
-os.environ['AZURE_APP_CONFIG_CONNECTION_STRING'] = config_file.read()
-
-connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
-app_config_client = AzureAppConfigurationClient.from_connection_string(
-    connection_string)
-params = quote_plus(app_config_client.get_configuration_setting(
-    key='db_connection_string').value)
-
-db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
+db = SQLAlchemy()
 
 
 def create_app():
     app = Flask(__name__)
+
+    config_file = open("config.txt", "r")
+
+    os.environ['AZURE_APP_CONFIG_CONNECTION_STRING'] = config_file.read()
+
+    connection_string = os.getenv('AZURE_APP_CONFIG_CONNECTION_STRING')
+    app_config_client = AzureAppConfigurationClient.from_connection_string(
+        connection_string)
+    params = quote_plus(app_config_client.get_configuration_setting(
+        key='db_connection_string').value)
+
+    db = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
 
     # Secret key, Will change this later to use config
     app.config['SECRET_KEY'] = 'ABCDEFGHIJKLMNOP'
