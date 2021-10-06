@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, session
 from sqlalchemy import text, Table, MetaData, Column, Integer
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from . import file_upload
 
 import website.file_upload
 
@@ -33,19 +34,23 @@ def testingGround():
 def adminPage():
 
     if session.get("username"):
-        return "This is the admin page"
+        return render_template("admin.html")
     else:
         return "You are not logged in"
 
+
+@views.route("/saveFile", methods=['GET', 'POST'])
+def saveFile():
+    print("first count")
+    print(len(request.files))
+    return file_upload.upload_file()
 
 """@views.route("/uploadFile")
 def uploadFile():
     return render_template("file_upload.html")
 
 
-@views.route("/saveFile", methods=['GET', 'POST'])
-def saveFile():
-    return file_upload.upload_file()
+
 
 
 """

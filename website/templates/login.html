@@ -1,29 +1,23 @@
-<form method="POST">
-    <h3 align="center">Login</h3>
-    <div>
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content%}
+<main>
+    <form method="POST">
 
-        <label for="User">User Name</label>
-        <input type="text" id="user" name="user"">
+        <h1 align="center">Login</h1>
+        <div class="basket">
 
-        </input>
-    </div>
-    <div>
-        <label for=" password">Password</label>
-        <input type="password" id="password" name="password">
-    </div>
-    <br />
+            <label for="User">User Name</label>
+            <input class="login" type="text" id="user" name="user""></input>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category,message in messages %}
-    {% if category == 'error'%}
-    <div role="alert">{{message}}</div>
-    {% else %}
-    <div role="success">{{message}}</div>
-    {%endif%}
-    {%endfor%}
-    {% endif%}
-    {% endwith %}
+            <label for="password">Password</label>
+            <input class="login" type="password" id="password" name="password">
+            <br />
+            <button type="submit">Login</button>
+        </div>
 
-    <button type="submit">Login</button>
-</form>
+
+    </form>
+</main>
+
+
+
+{% endblock %}

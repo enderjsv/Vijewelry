@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content%}
+<form enctype="multipart/form-data" action="/saveFile" method="POST">
+    <input type="file" name="file"><br />
+    <br />
+    <input type="submit" value="Upload">
+</form>
+{% endblock %}

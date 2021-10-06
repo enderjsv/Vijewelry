@@ -27,7 +27,6 @@ def login():
             user_row = result.first()
 
             if user_row and check_password_hash(user_row["password"], password):
-                flash("Logged In "+user_row["username"], category="success")
                 session["username"] = user_row["username"]
                 return redirect(url_for('views.adminPage'))
             else:

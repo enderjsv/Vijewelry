@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vi Handmade {% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div> {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,message in messages %}
+        {% if category == 'error'%}
+        <div class="alert_div" role="alert">{{message}}</div>
+        {% else %}
+        <div class="alert_div" role="success">{{message}}</div>
+        {%endif%}
+        {%endfor%}
+        {% endif%}
+        {% endwith %}
+    </div>
+    <div class="container">{% block content %} {% endblock %}</div>
+</body>
+
+</html>

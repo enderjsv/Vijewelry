@@ -8,6 +8,16 @@ html a {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
 
+div.alert_div[role="success"]{
+  font-size: 200%;
+  background-color: rgba(108, 255, 211, 0.363);
+}
+
+div.alert_div[role="alert"]{
+  font-size: 200%;
+  background-color: rgba(255, 108, 181, 0.363);
+}
+
 body {
   background-color: #fff;
   color: #666;
@@ -30,7 +40,7 @@ p {
   margin: 0.75rem 0 0;
 }
 
-h1 {
+h2 {
   font-size: 0.75rem;
   font-weight: normal;
   margin: 0;
@@ -41,6 +51,11 @@ input,
 button {
   border: 0 none;
   outline: 0 none;
+}
+
+input.login
+{
+  background-color: #E8F0FE;
 }
 
 button {
@@ -60,7 +75,7 @@ img,
   width: 100%;
 }
 
-input,
+input.basket,
 button,
 .basket,
 .basket-module,
