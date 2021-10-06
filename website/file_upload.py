@@ -32,7 +32,7 @@ def upload_file():
         if file:
             filename = secure_filename(file.filename)
             print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename).replace('\\','/'))
             flash('File Saved',category="success")
             return render_template(return_page)
 
